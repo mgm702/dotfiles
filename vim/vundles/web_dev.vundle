@@ -1,0 +1,5 @@
+Bundle 'mattn/emmet-vim'
+Bundle 'nono/jquery.vim'
+Bundle 'walm/jshint.vim'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'ap/vim-css-color'

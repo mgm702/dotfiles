@@ -1,0 +1,4 @@
+Bundle 'scrooloose/syntastic'
+Bundle 'gregsexton/MatchTag'
+Bundle 'Raimondi/delimitMate'
+Bundle 'ervandew/supertab'
