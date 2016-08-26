@@ -1,0 +1,17 @@
+*~
+.idea/
+.DS_Store
+
+#Ctags shouldn't be recorded in git
+tags
+
+# Global Ignore for PHP related files
+Search-Replace-DB-master/
+
+# Global ignore for Ruby/Rails related files
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Never include those .env files!
+.env
+.env.test

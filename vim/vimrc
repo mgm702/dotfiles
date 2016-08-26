@@ -6,7 +6,7 @@ set history=700                " Sets how many lines of history VIM has to remem
 set backspace=indent,eol,start " Allow backspace in insert mode
 set showmode                   " Show current mode down the bottom
 if has('gui_running')
-  syntax on                      " Syntax highlighting
+  syntax on
 endif
 set showcmd                    " Show what commands you’re typing
 set laststatus=2               " Show status line
@@ -17,8 +17,7 @@ set cmdheight=2                " Sets the Height of the Command Line
 set wildmenu                   " Turn on the WiLd menu, auto complete for commands in command line
 set noerrorbells               " No sounds on error
 set novisualbell
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file, and currently , is leader key
+
 let mapleader = ","
 let g:mapleader = ","
 
@@ -42,24 +41,22 @@ au BufRead,BufNewFile *.scss set filetype=css
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.coffee set filetype=javascript
 " Ruby file extensions
-autocmd BufNewFile,BufRead {Gemfile,Guardfile,Capfile,Rakefile,Thorfile,config.ru,Vagrantfile,*.prawn} set filetype=ruby
-autocmd BufNewFile,BufRead Gemfile.lock,Procfile set filetype=yaml
-autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
-autocmd BufNewFile,BufRead *_steps.rb set filetype=rspec.ruby
+au BufNewFile,BufRead {Gemfile,Guardfile,Capfile,Rakefile,Thorfile,config.ru,Vagrantfile,*.prawn} set filetype=ruby
+au BufNewFile,BufRead Gemfile.lock,Procfile set filetype=yaml
+au BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
+au BufNewFile,BufRead *_steps.rb set filetype=rspec.ruby
 
-"
 " ========= Files, Backups, and Swap Files ==========
 set noswapfile                  " Makes it so no .swp file is created when working on a project
 set nowb
 set nobackup
-" Below is set to fix autoread issues in Vim
 set autoread
+
+" If Focus is lost on the terminal, autosave
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
-" If Focus is lost on the terminal, autosave
 
 " ================ Indentation ======================
-
 set autoindent
 set smartindent
 set smarttab
@@ -90,18 +87,6 @@ set clipboard=unnamed   " Allows yy to work with clipboard
 
 " ================ Status Line ====================
 " Format the status line
-"set statusline=\ %F%m%r%h\ \ %2\{fugitive#statusline()}\ \ \ Line:\ %l/%L\ \ col:%c
-":set statusline=%F%m%r%h\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]
-
-set statusline=
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%t%*            "full path
-set statusline +=%2*\ %{fugitive#statusline()}%*                "git branch
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4v\ %*             "virtual column number
-set statusline +=%3*%{FileSize()}%*     "File Size in (KB)
 
 function! FileSize()
      let bytes = getfsize(expand("%:p"))
@@ -117,10 +102,18 @@ function! FileSize()
      endif
 endfunction
 
+set statusline=
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%t%*            "full path
+set statusline +=%2*\ %{fugitive#statusline()}%* "git branch
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%3*%{FileSize()}%*     "File Size in (KB)
 
 if !empty(glob("~/.vim/bundle/vim-airline/plugin/airline.vim"))
-  au VimEnter * AirlineToggle
-  "au VimEnter * call AirlineStatusBar()
+  au VimEnter * call AirlineStatusBar()
 endif
 
 " ================ Color Scheme ====================
@@ -132,21 +125,18 @@ if !empty(glob("~/.vim/colors/mac_classic.vim"))
 endif
 
 " Mapping for Rainbow Parentheses
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1 " 0 if you want to enable it later via :RainbowToggle
 let g:rainbow_conf = {'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick']}
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
 if filereadable(expand("~/.vim/vundles.vim"))
   source ~/.vim/vundles.vim
 endif
 
-
 " ================ Custom Settings ========================
 let g:rspec_runner = "os_x_iterm2"
 " This loads all the settings specified in ~/.vim/settings.vim
-" these can be included and removed based on config preferences
 if filereadable(expand("~/.vim/vundles.vim"))
   source ~/.vim/settings.vim
 endif
