@@ -1,0 +1,33 @@
+[user]
+  name = Matt Michnal
+  email = mattm3646@gmail.com
+
+[github]
+  user = mgm702
+
+[core]
+  excludesfile = /Users/mmichnal/.gitignore_global
+  editor = vim
+
+[alias]
+  ci = commit
+  br = branch
+  st = status
+  co = checkout
+  l = log
+  ctags = !.git/hooks/ctags
+
+[color]
+  ui = auto
+
+[push]
+  default = current
+
+[merge]
+  tool = opendiff
+
+[mergetool]
+  keepBackup = false
+
+[init]
+  templatedir = ~/.git_template
