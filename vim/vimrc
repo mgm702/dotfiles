@@ -5,7 +5,9 @@ set relativenumber
 set history=700                " Sets how many lines of history VIM has to remember
 set backspace=indent,eol,start " Allow backspace in insert mode
 set showmode                   " Show current mode down the bottom
-syntax on                      " Syntax highlighting
+if has('gui_running')
+  syntax on                      " Syntax highlighting
+endif
 set showcmd                    " Show what commands you’re typing
 set laststatus=2               " Show status line
 set modeline                   " Allow modelines
@@ -20,6 +22,15 @@ set novisualbell
 let mapleader = ","
 let g:mapleader = ","
 
+" This sets my shell to be equal to the current shell in my iterm
+set shell=$SHELL\ -l
+
+"Auto chdir in Vim
+autocmd BufEnter * silent! lcd %:p:h
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
 " ============= Folds Settings =====================
 set foldmethod=indent   " Fold based on indent
 set foldnestmax=3       " Deepest fold is 3 levels
@@ -29,7 +40,14 @@ set foldlevelstart=99   " start out with everything unfolded
 " ================ Relevant Filetypes ====================
 au BufRead,BufNewFile *.scss set filetype=css
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.coffee set filetype=javascript
+" Ruby file extensions
+autocmd BufNewFile,BufRead {Gemfile,Guardfile,Capfile,Rakefile,Thorfile,config.ru,Vagrantfile,*.prawn} set filetype=ruby
+autocmd BufNewFile,BufRead Gemfile.lock,Procfile set filetype=yaml
+autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
+autocmd BufNewFile,BufRead *_steps.rb set filetype=rspec.ruby
 
+"
 " ========= Files, Backups, and Swap Files ==========
 set noswapfile                  " Makes it so no .swp file is created when working on a project
 set nowb
@@ -52,9 +70,9 @@ set lcs=tab:▸\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 set list
 " For ruby, autoindent with two spaces, always expand tabs
-autocmd FileType ruby,vim,haml,eruby,yaml,html,javascript,sass,scss,cucumber set ai sw=2 sts=2 et
+autocmd FileType ruby,vim,sh,bash,haml,eruby,yaml,html,hbs,javascript,json,css,sass,scss,cucumber set ai sw=2 sts=2 et
 " For python and php the indentation will be set at four instead of two and expand tabs
-autocmd FileType css,python,php set sw=4 sts=4 et
+autocmd FileType python,php set sw=4 sts=4 et
 
 filetype plugin on
 filetype indent on
@@ -72,46 +90,46 @@ set clipboard=unnamed   " Allows yy to work with clipboard
 
 " ================ Status Line ====================
 " Format the status line
-"set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l/%L\ \ col:%c
+"set statusline=\ %F%m%r%h\ \ %2\{fugitive#statusline()}\ \ \ Line:\ %l/%L\ \ col:%c
+":set statusline=%F%m%r%h\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]
 
 set statusline=
 set statusline +=%5*%{&ff}%*            "file format
 set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%F%*            "full path
-set statusline +=%2*%m%*                "modified flag
+set statusline +=%4*\ %<%t%*            "full path
+set statusline +=%2*\ %{fugitive#statusline()}%*                "git branch
 set statusline +=%1*%=%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%3*%{FileSize()}%*     "File Size in (KB)
 
-"function! AirlineStatusBar()
-  "if exists(":AirlineTheme")
+function! FileSize()
+     let bytes = getfsize(expand("%:p"))
+     if bytes <= 0
+         return ""
+     endif
+     if bytes < 1024
+         return bytes . "B"
+     elseif bytes < 1048576 && bytes >= 1024
+        return (bytes / 1024) . "KB"
+     elseif bytes < 1073741824 && bytes >= 1048576
+        return (bytes / 1048576) . "MB"
+     endif
+endfunction
 
-    " mapping for airline status bar style
-    let g:airline_powerline_fonts=1
-    let g:airline_theme='badwolf'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:powerline_symbols = 'fancy'
 
-    " function to show total amount of lines in the airline  and the percentage of
-    " file cursor is currently located at {{{
-    function! AirlineInit()
-      let g:airline_section_z = airline#section#create_right(['line:%l/%L col:%c %p%%'])
-      let g:airline_section_c = airline#section#create_left(['%f'])
-    endfunction
-    " }}}]
-    ":call AirlineInit()
-  "endif
-"endfunction
-
-"au VimEnter * call <Plug>NERDTreeToggle
-"au VimEnter * call AirlineStatusBar()
-au VimEnter * call AirlineInit()
+if !empty(glob("~/.vim/bundle/vim-airline/plugin/airline.vim"))
+  au VimEnter * AirlineToggle
+  "au VimEnter * call AirlineStatusBar()
+endif
 
 " ================ Color Scheme ====================
 syntax on
 set term=screen-256color
-set background=dark
-color jellybeans
+set background=light
+if !empty(glob("~/.vim/colors/mac_classic.vim"))
+  color mac_classic
+endif
 
 " Mapping for Rainbow Parentheses
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
@@ -126,8 +144,9 @@ endif
 
 
 " ================ Custom Settings ========================
+let g:rspec_runner = "os_x_iterm2"
 " This loads all the settings specified in ~/.vim/settings.vim
 " these can be included and removed based on config preferences
 if filereadable(expand("~/.vim/vundles.vim"))
-  so ~/.vim/settings.vim
+  source ~/.vim/settings.vim
 endif
