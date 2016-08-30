@@ -9,12 +9,10 @@ export PATH="$MAMP_PHP:$PATH"
 export PATH="$PATH:~/bin"
 export TERM="xterm-256color"
 
-
 export EDITOR="mvim"
 
 # [[ $- != *i* ]] && return
 # [[ -z "$TMUX" ]] && exec tmux
-
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -25,26 +23,32 @@ fi
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
   source '/usr/local/share/chruby/chruby.sh'
   source '/usr/local/share/chruby/auto.sh'
-  chruby ruby-2.2.5
+  chruby $(cat ~/.ruby-version )
 else
   echo "Ain't got no chruby"
 fi
 
 function parse_ruby_version {
-  ruby --version | cut -d' ' -f 1-2
+  ruby_ver=$( ruby -v | egrep -o '^(m)?ruby [[:digit:]][[:punct:]][[:digit:]]([[:punct:]][[:digit:]])?' )
+  ruby_dir=$( echo $ruby_ver | egrep -o -m 1 -h '[[:digit:]]\.[[:digit:]](\.[[:digit:]])?')
+  dir=$(ls ~/.gem/ruby/$ruby_dir/gems/rails* 2>/dev/null)
+  if [[ $dir ]]; then
+    rails_ver=$( rails -v | egrep -o '^Rails [[:digit:]][[:punct:]][[:digit:]]([[:punct:]][[:digit:]])?' )
+    rails_ver=$( echo $rails_ver | tr '[:upper:]' '[:lower:]')
+    echo ${ruby_ver} -- ${rails_ver}
+  else
+    echo $ruby_ver
+  fi
 }
 
 export GIT_PS1_SHOWDIRTYSTATE=1 
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWTRACKEDFILES=1
 
-
-if test "$(uname)" = "Darwin"
+if test "$(uname)" = "Darwin"; then
   PS1="\[\033[32m\][\w]\[\033[0m\] \033[35m\][ \$(/bin/ls -1 | /usr/bin/wc -l | gsed 's: ::g') files ]\n\[\033[1;36m\]\u\[\033[1;31m\] [$(chruby_preexec_bash_set)$(parse_ruby_version)]:$(tput sgr0)\$(__git_ps1) \e[34m\] ☁︎ \[\e[0m\] "
-then
-elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+elif test "$(expr substr $(uname -s) 1 5)" = "Linux"; then
   PS1="\[\033[32m\][\w]\[\033[0m\] \033[35m\][ \$(/bin/ls -1 | /usr/bin/wc -l | sed 's: ::g') files ]\n\[\033[1;36m\]\u\[\033[1;31m\] [$(chruby_preexec_bash_set)$(parse_ruby_version)]:$(tput sgr0)\$(__git_ps1) \e[34m\] ☁︎ \[\e[0m\] "
-then
 fi
 
 export CLICOLOR=1
