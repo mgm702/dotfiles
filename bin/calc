@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Quick command line calculator function
+
+echo "$*" | bc -l;

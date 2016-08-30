@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Nukes a branch locally and on the origin remote.
+
+git branch -D $1
+git push origin :$1

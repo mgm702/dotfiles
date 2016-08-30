@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Outputs the colors the terminal can handle for current system
+
+local X=$(tput op)
+local Y=$(printf %$((COLUMNS-6))s)
+for i in {0..256}; do
+o=00$i;
+echo -e ${o:${#o}-3:3} $(tput setaf $i;tput setab $i)${Y// /=}$X;
+done

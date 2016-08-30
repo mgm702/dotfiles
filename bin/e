@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Quick shortcut to favorite editor
+
+if [ "$1" = "" ] ; then
+  exec $EDITOR .
+else
+  exec $EDITOR "$1"
+fi

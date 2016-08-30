@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Quick shortcut for vagrant commands
+
+if vagrant 2>/dev/null; then
+  vagrant $1
+else
+  vagrant
+fi
