@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 BUNDLE_DIR=~/.vim/bundle
 COLOR_DIR=~/.vim/colors
 
@@ -8,16 +10,14 @@ mkdir -p "$BUNDLE_DIR" && (git clone https://github.com/VundleVim/Vundle.vim "$B
 mkdir -p "$COLOR_DIR"
 
 # Insert light/dark vim color scheme in system
-cd $COLOR_DIR
-wget -t 45 https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
-wget -t 45 https://raw.githubusercontent.com/nelstrom/vim-mac-classic-theme/master/colors/mac_classic.vim
+wget -t 45 https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim -O $COLOR_DIR/jellybeans.vim
+wget -t 45 https://raw.githubusercontent.com/nelstrom/vim-mac-classic-theme/master/colors/mac_classic.vim -O $COLOR_DIR/mac_classic.vim
 
 # Add symlinks for vim files
 ln -sfv "$DOTFILES_DIR/vim/vimrc" ~/.vimrc
 
-# Build out settings and vundle portions
+# Add symlinks for both the setting and vundle commands
 # Question is to symlink or no?
-
 
 # Install bundles
 vim +PluginInstall +qall

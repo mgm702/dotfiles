@@ -30,22 +30,6 @@ autocmd BufEnter * silent! lcd %:p:h
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" ============= Folds Settings =====================
-set foldmethod=indent   " Fold based on indent
-set foldnestmax=3       " Deepest fold is 3 levels
-set nofoldenable        " Don't fold by default
-set foldlevelstart=99   " start out with everything unfolded
-
-" ================ Relevant Filetypes ====================
-au BufRead,BufNewFile *.scss set filetype=css
-au BufRead,BufNewFile *.md set filetype=markdown
-au BufRead,BufNewFile *.coffee set filetype=javascript
-" Ruby file extensions
-au BufNewFile,BufRead {Gemfile,Guardfile,Capfile,Rakefile,Thorfile,config.ru,Vagrantfile,*.prawn} set filetype=ruby
-au BufNewFile,BufRead Gemfile.lock,Procfile set filetype=yaml
-au BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
-au BufNewFile,BufRead *_steps.rb set filetype=rspec.ruby
-
 " ========= Files, Backups, and Swap Files ==========
 set noswapfile                  " Makes it so no .swp file is created when working on a project
 set nowb
@@ -56,27 +40,6 @@ set autoread
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
 
-" ================ Indentation ======================
-set autoindent
-set smartindent
-set smarttab
-set expandtab
-
-"Invisible Characters for spacing
-set lcs=tab:▸\ ,trail:-,extends:>,precedes:<,nbsp:+
-
-set list
-" For ruby, autoindent with two spaces, always expand tabs
-autocmd FileType ruby,vim,sh,bash,haml,eruby,yaml,html,hbs,javascript,json,css,sass,scss,cucumber set ai sw=2 sts=2 et
-" For python and php the indentation will be set at four instead of two and expand tabs
-autocmd FileType python,php set sw=4 sts=4 et
-
-filetype plugin on
-filetype indent on
-
-set wrap       " Wrap lines
-set linebreak  " Wrap lines at convenient points
-
 " ================ Interactions ==============================
 
 set scrolloff=3                 " Start scrolling slightly before the cursor reaches an edge
@@ -84,49 +47,6 @@ set sidescrolloff=5             " Scroll sideways a character at a time, rather 
 set sidescroll=1
 set mouse=a             " Enable mouse use in all modes
 set clipboard=unnamed   " Allows yy to work with clipboard
-
-" ================ Status Line ====================
-" Format the status line
-
-function! FileSize()
-     let bytes = getfsize(expand("%:p"))
-     if bytes <= 0
-         return ""
-     endif
-     if bytes < 1024
-         return bytes . "B"
-     elseif bytes < 1048576 && bytes >= 1024
-        return (bytes / 1024) . "KB"
-     elseif bytes < 1073741824 && bytes >= 1048576
-        return (bytes / 1048576) . "MB"
-     endif
-endfunction
-
-set statusline=
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %<%t%*            "full path
-set statusline +=%2*\ %{fugitive#statusline()}%* "git branch
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%1*%4v\ %*             "virtual column number
-set statusline +=%3*%{FileSize()}%*     "File Size in (KB)
-
-if !empty(glob("~/.vim/bundle/vim-airline/plugin/airline.vim"))
-  au VimEnter * call AirlineStatusBar()
-endif
-
-" ================ Color Scheme ====================
-syntax on
-set term=screen-256color
-set background=light
-if !empty(glob("~/.vim/colors/mac_classic.vim"))
-  color mac_classic
-endif
-
-" Mapping for Rainbow Parentheses
-let g:rainbow_active = 1 " 0 if you want to enable it later via :RainbowToggle
-let g:rainbow_conf = {'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick']}
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim

@@ -1,5 +1,4 @@
 Bundle 'mgm702/vim-tabtastic'
-Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'luochen1990/rainbow'
 Bundle 'Lokaltog/vim-easymotion'
