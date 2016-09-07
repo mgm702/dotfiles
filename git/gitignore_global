@@ -15,3 +15,4 @@ Search-Replace-DB-master/
 # Never include those .env files!
 .env
 .env.test
+\[Vundle\]\ Installer

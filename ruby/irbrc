@@ -29,7 +29,11 @@ module Kernel
     if caller.first =~ /(irb)/
       self.ls(*args)
     else
+      orig_methods
+    end
+  end
 
-def r
-  reload!
+  def r
+    reload!
+  end
 end

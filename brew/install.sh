@@ -20,9 +20,10 @@ brew update
 brew upgrade
 
 apps=(
-  bash-completion2
+  bash-completion
   coreutils
   dockutil
+  gnu-sed
   hub
   wget
   ctags
@@ -49,5 +50,9 @@ brew install "${apps[@]}"
 
 # update Heroku CLI to latest version
 heroku update
+
+if [ "$(uname)" == "Darwin" ]; then
+  . "$DOTFILES_DIR/brew/brew-cask.sh"
+fi
 
 echo "Homebrew install complete!"
