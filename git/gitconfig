@@ -12,7 +12,7 @@
 [alias]
   ci = commit
   br = branch
-  st = status
+  s = status
   co = checkout
   l = log
   ctags = !.git/hooks/ctags
