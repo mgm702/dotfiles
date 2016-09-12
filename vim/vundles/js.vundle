@@ -1,0 +1,5 @@
+Bundle 'nono/jquery.vim'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'walm/jshint.vim'
+Bundle 'dsawardekar/ember.vim'
+Bundle 'dsawardekar/portkey'

@@ -1,6 +1,5 @@
 filetype off
 
-" set rtp+=~/.vim/bundle/vundle/
 set rtp+=~/.vim/vundles/
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -18,7 +17,9 @@ runtime ruby.vundle
 runtime auto_complete.vundle
 runtime git.vundle
 runtime project.vundle
-runtime web_dev.vundle
+runtime html.vundle
+runtime css.vundle
+runtime js.vundle
 
 "runtime php.vundle
 "runtime status_line.vundle

@@ -1,15 +1,7 @@
 " ================ Key Mappings ==================
 
-" Pressing Ctrl pt will throw you in to pastetoggle so that pasting large amounts
-" of text easy
-set pastetoggle=<c-p>
-
-
-" ======== Leader Key Mapping ========
-
 " Pressing ,sc will toggle and untoggle spell checking
 map <leader>sc :setlocal spell!<cr>
-
 
 " ======== Normal Mode Mapping ========
 
@@ -33,10 +25,6 @@ nnoremap <leader>' viW<esc>a'<esc>gvo<esc>i'<esc>gvo<esc>3l
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Explore folder directory mapping
-nnoremap <c-e> :Explore<cr>
-nnoremap <c-x> :Texplore<cr>
 
 nnoremap ex :Explore<cr>
 nnoremap tex :Texplore<cr>

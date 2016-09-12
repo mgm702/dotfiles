@@ -30,24 +30,6 @@ autocmd BufEnter * silent! lcd %:p:h
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" ========= Files, Backups, and Swap Files ==========
-set noswapfile                  " Makes it so no .swp file is created when working on a project
-set nowb
-set nobackup
-set autoread
-
-" If Focus is lost on the terminal, autosave
-au FocusGained,BufEnter * :silent! !
-au FocusLost,WinLeave * :silent! w
-
-" ================ Interactions ==============================
-
-set scrolloff=3                 " Start scrolling slightly before the cursor reaches an edge
-set sidescrolloff=5             " Scroll sideways a character at a time, rather than a screen at a time
-set sidescroll=1
-set mouse=a             " Enable mouse use in all modes
-set clipboard=unnamed   " Allows yy to work with clipboard
-
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
 if filereadable(expand("~/.vim/vundles.vim"))
