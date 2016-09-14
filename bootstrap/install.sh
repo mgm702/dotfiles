@@ -2,7 +2,7 @@
 
 # Get current dir
 export DOTFILES_DIR
-bootstrap_dir ="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+bootstrap_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOTFILES_DIR="$(dirname "$bootstrap_dir")"
 
 # Update dotfiles itself first
@@ -13,7 +13,6 @@ for dir in `ls $DOTFILES_DIR`;
 do
   if [ \( -f "$dir/install.sh" \) -a \( "$dir" != "bootstrap" \) ]; then
     echo $dir
-    . "$dir/install.sh";
+    #. "$dir/install.sh";
   fi
 done
-

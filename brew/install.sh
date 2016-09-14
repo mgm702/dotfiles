@@ -23,6 +23,7 @@ apps=(
   bash-completion
   coreutils
   dockutil
+  git
   gnu-sed
   hub
   wget
