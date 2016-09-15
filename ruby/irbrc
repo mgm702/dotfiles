@@ -9,7 +9,7 @@ IRB.conf[:AUTO_INDENT] = true
 
 class Object
   def local_methods(obj = self)
-    (obj.methods - obj.class.superclass.instance_methods).sort
+    (obj.orig_methods - obj.class.superclass.instance_methods).sort
   end
 
   # Print docs, ex: String.ri :downcase
