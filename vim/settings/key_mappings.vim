@@ -22,9 +22,6 @@ nnoremap <c-space> ?
 nnoremap <leader>" viW<esc>a"<esc>gvo<esc>i"<esc>gvo<esc>3l
 nnoremap <leader>' viW<esc>a'<esc>gvo<esc>i'<esc>gvo<esc>3l
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 nnoremap ex :Explore<cr>
 nnoremap tex :Texplore<cr>
@@ -44,6 +41,10 @@ nnoremap <leader>tp :tabp<cr>
 nnoremap <leader>tn :tabn<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :tabmove
+
+nnoremap to :tabnew<cr>
+nnoremap tp :tabp<cr>
+nnoremap tn :tabn<cr>
 
 " Mapping for last search
 nnoremap <leader><space> :noh<cr>
