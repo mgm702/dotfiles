@@ -16,4 +16,4 @@ gem install looksee
 gem install lunchy
 gem install nokogiri
 gem install mechanize
-gem install rails -v 4.2.5
+gem install rails

@@ -1,11 +1,32 @@
 require 'irb/completion'
 require 'rubygems'
 require 'looksee'
+require 'fileutils'
 
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:AUTO_INDENT] = true
+
+def loaded_gems
+  rv = %x( ruby -v )
+  ruby_ver = rv[/^ruby.\d.\d.\d/].gsub!("ruby ","")
+  gems = Dir["#{Dir.home}/.gem/ruby/#{ruby_ver}/gems/*"]
+  gems.each {|x| p x.gsub!(/\/.*\//,'')}
+  nil
+end
+
+def dir_ls
+  files = Dir.glob('*').sort
+  files.each do |f|
+    if Dir.exists? f
+      puts f + '/'
+    else
+      puts f
+    end
+  end
+  nil
+end
 
 class Object
   def local_methods(obj = self)
