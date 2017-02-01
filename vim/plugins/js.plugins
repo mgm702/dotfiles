@@ -1,5 +1,5 @@
-Bundle 'nono/jquery.vim'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'walm/jshint.vim'
-Bundle 'dsawardekar/ember.vim'
-Bundle 'dsawardekar/portkey'
+Plug 'nono/jquery.vim', {'for': ['javascript','json']}
+Plug 'mustache/vim-mustache-handlebars', {'for': ['handlebars.ember', 'javascript', 'json']}
+Plug 'walm/jshint.vim', {'for': ['javascript','json']}
+Plug 'dsawardekar/ember.vim', {'for': ['javascript','json','handlebars.ember']}
+Plug 'dsawardekar/portkey', {'for': ['javascript', 'json','handlebars.ember']}

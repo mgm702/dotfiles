@@ -1,2 +1,3 @@
-Bundle 'spf13/PIV'
-Bundle 'shawncplus/phpcomplete.vim'
+Plug 'spf13/PIV', {'for': 'php'}
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+Plug 'dsawardekar/wordpress.vim', {'for': 'php'}

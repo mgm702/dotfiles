@@ -1,2 +1,2 @@
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'ap/vim-css-color'
+Plug 'hail2u/vim-css3-syntax', {'for': ['css','scss','sass']}
+Plug 'ap/vim-css-color', {'for': ['css','scss','sass']}

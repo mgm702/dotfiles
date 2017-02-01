@@ -15,5 +15,9 @@ runtime project.plugins
 runtime html.plugins
 runtime js.plugins
 runtime css.plugins
+runtime c.plugins
+runtime go.vundle
+runtime c.vundle
 " runtime status_line.plugins
 
+call plug#end()

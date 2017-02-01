@@ -1,4 +1,4 @@
-Bundle 'scrooloose/syntastic'
-Bundle 'gregsexton/MatchTag'
-Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
+Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck'}
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'

@@ -1,10 +1,10 @@
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rvm.git'
-Bundle 'tpope/vim-rake.git'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'skwp/vim-spec-finder'
-Bundle 'ck3g/vim-change-hash-syntax'
-Bundle 'keith/rspec.vim'
+Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
+Plug 'tpope/vim-rails', {'for': 'ruby'}
+Plug 'tpope/vim-endwise', {'for': 'ruby'}
+Plug 'tpope/vim-bundler', {'for': 'ruby'}
+Plug 'tpope/vim-rake', {'for': 'ruby'}
+Plug 'ecomba/vim-ruby-refactoring', {'for': 'ruby'}
+Plug 'ck3g/vim-change-hash-syntax', {'for': 'ruby'}
+Plug 'thoughtbot/vim-rspec', {'for': 'ruby'}
+Plug 'parkr/vim-jekyll', {'for': 'ruby'}
+"Plug 'danchoi/ri.vim', {'for': 'ruby'}

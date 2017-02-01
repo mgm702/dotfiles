@@ -1,8 +1,9 @@
-Bundle 'mgm702/vim-tabtastic'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'luochen1990/rainbow'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'YankRing.vim'
-Bundle 'tpope/vim-obsession'
+Plug 'mgm702/vim-tabtastic', {'on': 'Tabtastic'}
+Plug 'rizzatti/dash.vim', {'on': 'Dash'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'luochen1990/rainbow'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'L9'
+Plug 'FuzzyFinder', {'on': 'FufFile'}
+Plug 'YankRing.vim'
+Plug 'tpope/vim-obsession', {'on': 'Obsess'}
