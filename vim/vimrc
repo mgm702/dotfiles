@@ -18,7 +18,6 @@ set wildmenu                   " Turn on the WiLd menu, auto complete for comman
 set noerrorbells               " No sounds on error
 set novisualbell
 
-let mapleader = ","
 let g:mapleader = ","
 
 " This sets my shell to be equal to the current shell in my iterm
