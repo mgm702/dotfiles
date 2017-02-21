@@ -1,0 +1,9 @@
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+  else
+    echo "run: brew install git bash-completion"
+fi
+
+# killall
+
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;

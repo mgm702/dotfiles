@@ -1,0 +1,30 @@
+# Shows all the ruby directories that are currently being used
+alias lpath="ruby -e 'puts $:'"
+
+# Shows the memory hogs of the directory
+alias ducks='du -cks * | sort -rn | head'
+
+# Adds Ctags for the gems currently being used
+alias gem_ctags="ctags -R . $(bundle list --paths)"
+
+# Shortcuts
+alias tm="tmux"
+alias be="bundle exec"
+alias rr="rm -rf"
+alias listaliases="alias | sed 's/=.*//'"
+alias quit="exit"
+
+# Network Shortcuts
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+
+# Shorcuts for cding up a directory
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Shortcut for listing scm_breeze
+alias las="list_aliases"
+
+# Helps clear up Postgres issue
+alias pg_clean="rm /usr/local/var/postgres/postmaster.pid"
