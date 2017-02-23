@@ -5,8 +5,8 @@ if test ! $(which brew)
   echo "Installing Homebrew Packages..."
 then
   if test "$(uname)" = "Darwin"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
@@ -24,6 +24,7 @@ apps=(
   coreutils
   dockutil
   git
+  go
   gnu-sed
   hub
   wget
@@ -37,10 +38,10 @@ apps=(
   ruby-install
   chruby
   nvm
-  macvim
   postgresql
   redis
   mysql
+  elasticsearch
   composer
   wp-cli
   awscli
@@ -53,6 +54,7 @@ brew install "${apps[@]}"
 heroku update
 
 if [ "$(uname)" == "Darwin" ]; then
+  brew install macvim
   . "$DOTFILES_DIR/brew/brew-cask.sh"
 fi
 

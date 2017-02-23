@@ -7,3 +7,4 @@ Plug 'L9'
 Plug 'FuzzyFinder', {'on': 'FufFile'}
 Plug 'YankRing.vim'
 Plug 'tpope/vim-obsession', {'on': 'Obsess'}
+Plug 'benmills/vimux', {'on': ['PromptVimTmuxCommand', 'RunLastVimTmuxCommand', 'VimuxRunCommand']}

@@ -1,7 +1,8 @@
 " ================ Key Mappings ==================
-
-" Pressing ,sc will toggle and untoggle spell checking
-map <leader>sc :setlocal spell!<cr>
+" This file contains key mappings that I like
+" it is broken down by the three Vim modes
+" and also includes section for plugins
+" ================================================
 
 " ======== Normal Mode Mapping ========
 
@@ -10,6 +11,9 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+
+" Pressing ,sc will toggle and untoggle spell checking
+nnoremap <leader>sc :setlocal spell!<cr>
 
 " Strip all trailing whitespace from a file, using ,W
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
@@ -21,7 +25,6 @@ nnoremap <c-space> ?
 " Quote words under cursor
 nnoremap <leader>" viW<esc>a"<esc>gvo<esc>i"<esc>gvo<esc>3l
 nnoremap <leader>' viW<esc>a'<esc>gvo<esc>i'<esc>gvo<esc>3l
-
 
 nnoremap ex :Explore<cr>
 nnoremap tex :Texplore<cr>
@@ -36,15 +39,7 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 
 " Useful mappings for managing tabs
-nnoremap <leader>to :tabnew<cr>
-nnoremap <leader>tp :tabp<cr>
-nnoremap <leader>tn :tabn<cr>
-nnoremap <leader>tc :tabclose<cr>
-nnoremap <leader>tm :tabmove
-
 nnoremap to :tabnew<cr>
-nnoremap tp :tabp<cr>
-nnoremap tn :tabn<cr>
 
 " Mapping for last search
 nnoremap <leader><space> :noh<cr>
@@ -79,3 +74,9 @@ nnoremap <leader>bs :Obsess!<cr>
 command! GdiffInTab tabedit %|vsplit|Gdiff
 nnoremap <leader>d :GdiffInTab<cr>
 nnoremap <leader>D :tabclose<cr>
+
+" Key mapping for Vimux plugin
+nnoremap tmux :VimuxRunCommand
+
+" Map for Syntastic Check mapping
+nnoremap <leader>ss :SyntasticCheck<cr>

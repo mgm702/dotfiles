@@ -14,5 +14,9 @@ ln -sfv "$DOTFILES_DIR/git/git_template/hooks/post-merge" $GIT_HOOKS/post-merge
 ln -sfv "$DOTFILES_DIR/git/git_template/hooks/post-commit" $GIT_HOOKS/post-commit
 ln -sfv "$DOTFILES_DIR/git/git_template/hooks/post-rewrite" $GIT_HOOKS/post-rewrite
 
+## Adds scm_breeze to users home directory and runs install on it
+git clone git://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze
+~/.scm_breeze/install.sh
+
 ## Adds the file necessary for displaying Git status in Bash prompt
 wget -t 45 https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh

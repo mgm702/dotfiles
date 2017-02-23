@@ -11,8 +11,16 @@ Search-Replace-DB-master/
 # Global ignore for Ruby/Rails related files
 /db/*.sqlite3
 /db/*.sqlite3-journal
+.bundle
+
+# Ignore Vim related files
+.netrwhist
+log/
+
+# Ignore log files
 
 # Never include those .env files!
 .env
 .env.test
 \[Vundle\]\ Installer
+\[Vundle\]\ List

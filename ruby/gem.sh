@@ -1,7 +1,6 @@
 ruby-install 2.2.3
 ruby-install 2.2.5
 ruby-install 2.3.0
-ruby-install mruby
 
 # Either echo chruby source to bash profile
 # or source in bash_profile which is already loaded up from dotfiles

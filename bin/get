@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# gets a variable (usage: get "VAR_NAME")
+
+get() {
+  echo "${!1}"
+}
