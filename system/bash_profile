@@ -20,6 +20,6 @@ fi
 #Files to source in
 source $HOME/.git-prompt.sh
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function_*,path,env,alias,chruby,prompt}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function_*,path,env,alias,completion,chruby,nvm,scm_breeze,prompt}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done

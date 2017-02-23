@@ -13,6 +13,13 @@ for dir in `ls $DOTFILES_DIR`;
 do
   if [ \( -f "$dir/install.sh" \) -a \( "$dir" != "bootstrap" \) ]; then
     echo "Running the install for" $dir
-    . "$dir/install.sh";
+    if [ $dir = "brew"]
+      . "$dir/install.sh";
+      ln -sfv "$DOTFILES_DIR/system/bash_profile" $HOME/.bash_profile
+      . $HOME/.bash_profile
+    then
+    else
+      . "$dir/install.sh";
+    fi
   fi
 done
