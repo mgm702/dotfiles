@@ -1,32 +1,25 @@
-#!/bin/bash
-#
+# If not running interactively, don't do anything
 
-######
-## Resolves the script path for the dotfiles
-## allowing to run from anywhere
-######
+[ -z "$PS1" ] && return
+
+# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
 
 READLINK=$(which greadlink || which readlink)
 CURRENT_SCRIPT=$BASH_SOURCE
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
   SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-  DOTFILES_DIR=$(dirname "$SCRIPT_PATH")
+  DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
 elif [ -d "$HOME/.dotfiles" ]; then
   DOTFILES_DIR="$HOME/.dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
-  return
+  return # `exit 1` would quit the shell itself
 fi
 
-######
-
 #Files to source in
-for DOTFILE in "$DOTFILES_DIR"/system/.{function_*,path,env,alias,,chruby,prompt}; do
+source $HOME/.git-prompt.sh
+
+for DOTFILE in "$DOTFILES_DIR"/system/.{function_*,path,env,alias,chruby,prompt}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
-
-### Make sourcing happen at bottom of bash_profile, or on other bash script
-source $HOME/.bashrc  # get aliases
-source $HOME/.bash-aliases # get aliases
-source $HOME/.git-prompt.sh
