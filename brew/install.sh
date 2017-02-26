@@ -10,6 +10,7 @@ then
   elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+    . "$DOTFILES_DIR/brew/brew-linux.sh"
   fi
 fi
 
@@ -24,16 +25,16 @@ apps=(
   coreutils
   dockutil
   git
+  heroku-toolbelt
   go
   gnu-sed
   hub
   wget
   ctags
   imagemagick
-  python
   vim
   tmux
-  grc
+  #grc
   z
   ruby-install
   chruby
@@ -42,10 +43,10 @@ apps=(
   redis
   mysql
   elasticsearch
-  composer
+  #composer
   wp-cli
   awscli
-  heroku-toolbelt
+  python
 )
 
 brew install "${apps[@]}"
@@ -54,7 +55,6 @@ brew install "${apps[@]}"
 heroku update
 
 if [ "$(uname)" == "Darwin" ]; then
-  brew install macvim
   . "$DOTFILES_DIR/brew/brew-cask.sh"
 fi
 

@@ -1,11 +1,8 @@
-ruby-install 2.2.3
-ruby-install 2.2.5
-ruby-install 2.3.0
+#Installs the correct ruby version
+# and sets up correct path to ruby files
+ruby-install 2.4.0
 
-# Either echo chruby source to bash profile
-# or source in bash_profile which is already loaded up from dotfiles
-
-chruby ruby-2.2.5
+chruby ruby-2.4.0
 gem install bundler
 gem install pry
 gem install rspec

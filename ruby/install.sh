@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# if it's linux sudo apt-get update needs to be run first
+#
+
 echo "Installing Ruby!"
 ln -sfv "$DOTFILES_DIR/ruby/irbrc" $HOME/.irbrc
 ln -sfv "$DOTFILES_DIR/ruby/railsrc" $HOME/.railsrc

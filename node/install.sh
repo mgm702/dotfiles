@@ -1,5 +1,7 @@
 . "${DOTFILES_DIR}/system/.nvm"
-nvm install 6
+nvm install 7.5
+
+nvm use 7.5
 
 # Globally install these packages
 packages=(
@@ -12,3 +14,5 @@ packages=(
 )
 
 npm install -g "${packages[@]}"
+
+nvm alias default stable

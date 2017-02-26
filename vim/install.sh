@@ -27,10 +27,10 @@ ln -sfv "$DOTFILES_DIR/vim/plugins.vim" $HOME/.vim/plugins.vim
 
 # Add directories for settings and plugins
 # Then copy over the plugins the system directory
-mkdir -p "$SETTINGS"
-cp -R "$DOTFILES_DIR/vim/settings/*.vim" "$SETTINGS"
-mkdir -p "$PLUGINS"
-cp -R "$DOTFILES_DIR/vim/plugins/*.plugins" "$PLUGINS"
+mkdir -p $SETTINGS
+/bin/bash -c "cp -R "$DOTFILES_DIR/vim/settings/*.vim" $SETTINGS"
+mkdir -p $PLUGINS
+/bin/bash -c "cp -R "$DOTFILES_DIR/vim/plugins/*.plugins" $PLUGINS"
 
 # Install bundles
 vim +PlugInstall +qall

@@ -1,5 +1,7 @@
-# Install Caskroom
+# Install MacVim because it's amazing for opening downloaded files in
+brew install macvim
 
+# Install Caskroom
 brew tap caskroom/cask
 brew install brew-cask
 brew tap caskroom/versions
