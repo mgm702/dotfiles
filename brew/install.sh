@@ -23,9 +23,9 @@ brew upgrade
 apps=(
   bash-completion
   coreutils
+  tmux
   dockutil
-  git
-  heroku-toolbelt
+  #git
   go
   gnu-sed
   hub
@@ -33,8 +33,6 @@ apps=(
   ctags
   imagemagick
   vim
-  tmux
-  #grc
   z
   ruby-install
   chruby
@@ -43,16 +41,10 @@ apps=(
   redis
   mysql
   elasticsearch
-  #composer
-  wp-cli
   awscli
-  python
 )
 
 brew install "${apps[@]}"
-
-# update Heroku CLI to latest version
-heroku update
 
 if [ "$(uname)" == "Darwin" ]; then
   . "$DOTFILES_DIR/brew/brew-cask.sh"

@@ -9,4 +9,4 @@ ln -sfv "$DOTFILES_DIR/bin/git-nuke" $HOME/bin/git-nuke
 ln -sfv "$DOTFILES_DIR/bin/glog" $HOME/bin/glog
 ln -sfv "$DOTFILES_DIR/bin/va" $HOME/bin/va
 
-chmod x+ $HOME/bin/*
+chmod 777 $HOME/bin/*

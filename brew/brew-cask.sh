@@ -1,5 +1,15 @@
-# Install MacVim because it's amazing for opening downloaded files in
-brew install macvim
+# Install packages that don't really work on Linux systems
+mac=(
+  macvim
+  wp-cli
+  composer
+  heroku-toolbelt
+)
+
+brew install "${mac[@]}"
+
+# update Heroku CLI to latest version
+heroku update
 
 # Install Caskroom
 brew tap caskroom/cask
@@ -7,7 +17,6 @@ brew install brew-cask
 brew tap caskroom/versions
 
 # Install packages
-
 apps=(
   spectacle
   alfred
