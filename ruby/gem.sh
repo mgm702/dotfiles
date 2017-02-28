@@ -1,6 +1,8 @@
 #Installs the correct ruby version
 # and sets up correct path to ruby files
-ruby-install 2.4.0
+ruby-install ruby-2.4.0
+
+source $HOME/.bash_profile
 
 chruby ruby-2.4.0
 gem install bundler

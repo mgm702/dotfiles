@@ -1,4 +1,4 @@
-if [ -f /usr/local/share/chruby/chruby.sh ]; then
+if [ -f $(brew --prefix chruby)/share/chruby/chruby.sh ]; then
   source "$(brew --prefix chruby)/share/chruby/chruby.sh"
   source "$(brew --prefix chruby)/share/chruby/auto.sh"
   chruby $(cat $HOME/.ruby-version )

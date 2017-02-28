@@ -1,13 +1,20 @@
-#Starting with System paths
+# Starting with System paths
 prepend-path "$HOME/bin"
 prepend-path "/usr/local/bin"
+
+# If installed on Linux system, add Linuxbrew to path
+if test "$(expr substr $(uname -s) 1 5)" = "Linux"
+then
+  prepend-path "$HOME/.linuxbrew/bin"
+fi
+
+# Path additions for GoLang
 export GOPATH=$HOME/code/go
 export GOROOT=/usr/local/opt/go/libexec
 prepend-path "$GOROOT/bin:$GOPATH/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
-
 PATH=`echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}'`
 
 export PATH

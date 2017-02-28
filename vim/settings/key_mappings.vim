@@ -34,6 +34,10 @@ nnoremap vex :Vexplore<cr>
 nnoremap j gj
 nnoremap k gk
 
+" Escape with kj
+inoremap kj <esc>
+inoremap <C-c> <C-[>
+
 " Split the Vim config either vertical or horizontal
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
