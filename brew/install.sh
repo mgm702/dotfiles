@@ -25,7 +25,6 @@ apps=(
   coreutils
   tmux
   dockutil
-  #git
   go
   gnu-sed
   hub
@@ -37,11 +36,10 @@ apps=(
   ruby-install
   chruby
   nvm
+  elasticsearch
   postgresql
   redis
   mysql
-  elasticsearch
-  awscli
 )
 
 brew install "${apps[@]}"

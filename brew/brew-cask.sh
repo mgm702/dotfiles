@@ -4,6 +4,8 @@ mac=(
   wp-cli
   composer
   heroku-toolbelt
+  python
+  awscli
 )
 
 brew install "${mac[@]}"
@@ -23,16 +25,23 @@ apps=(
   dash
   firefox
   flux
+  flycut
+  anki
   google-chrome
   google-drive
   slack
+  sketch
   spotify
   tomighty
+  pocket
+  screenhero
   iterm2
+  gitx
   evernote
   caffeine
   virtualbox
   sequel-pro
+  rdm
   vagrant
   docker-toolbox
   quicksilver

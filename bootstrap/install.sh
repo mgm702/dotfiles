@@ -21,8 +21,18 @@ do
     echo "Running the install for" $dir
     if [ $dir = "brew" ]; then
       . "$dir/install.sh";
-      ln -sfv "$DOTFILES_DIR/system/bash_profile" $HOME/.bash_profile
-      source $HOME/.bash_profile
+
+      # After brew is run, we need all the packages installed to work
+      # we need to source the bash_profile script
+      # into either bashrc or bash_profile depending on system
+      if test "$(expr substr $(uname -s) 1 5)" = "Linux"
+      then
+        ln -sfv "$DOTFILES_DIR/system/bash_profile" $HOME/.bashrc
+        source $HOME/.bashrc
+      else
+        ln -sfv "$DOTFILES_DIR/system/bash_profile" $HOME/.bash_profile
+        source $HOME/.bash_profile
+      fi
     else
       . "$dir/install.sh";
     fi
