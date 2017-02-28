@@ -12,6 +12,8 @@ DOTFILES_DIR="$(dirname "$bootstrap_dir")"
 if test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
   . "$DOTFILES_DIR/linux/setup.sh"
+else
+  . "$DOTFILES_DIR/osx/setup.sh"
 fi
 
 # Package managers & packages
