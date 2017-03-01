@@ -8,5 +8,6 @@ ln -sfv "$DOTFILES_DIR/bin/get" $HOME/bin/get
 ln -sfv "$DOTFILES_DIR/bin/git-nuke" $HOME/bin/git-nuke
 ln -sfv "$DOTFILES_DIR/bin/glog" $HOME/bin/glog
 ln -sfv "$DOTFILES_DIR/bin/va" $HOME/bin/va
+ln -sfv "$DOTFILES_DIR/bin/wtr" $HOME/bin/wtr
 
 chmod 777 $HOME/bin/*

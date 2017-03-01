@@ -1,21 +1,7 @@
-# Install packages that don't really work on Linux systems
-mac=(
-  macvim
-  wp-cli
-  composer
-  heroku-toolbelt
-  python
-  awscli
-)
-
-brew install "${mac[@]}"
-
-# update Heroku CLI to latest version
-heroku update
-
 # Install Caskroom
 brew tap caskroom/cask
 brew install brew-cask
+brew install brew-cask-completion
 brew tap caskroom/versions
 
 # Install packages
@@ -33,9 +19,10 @@ apps=(
   sketch
   spotify
   tomighty
-  pocket
+  java
   screenhero
   iterm2
+  macvim
   gitx
   evernote
   caffeine
@@ -50,3 +37,23 @@ brew cask install "${apps[@]}"
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
+
+# Install packages that don't really work on Linux systems
+mac=(
+  elasticsearch
+  heroku-toolbelt
+  python
+  awscli
+  homebrew/php/wp-cli
+  composer
+)
+
+brew install "${mac[@]}"
+
+brew services start elasticsearch
+brew services start mysql
+brew services start redis
+brew services start posgresql
+
+# update Heroku CLI to latest version
+heroku update

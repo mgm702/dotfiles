@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Quick command to see weather in certain town
+
+wtr(){
+  curl -4 'wttr.in/$1'
+}

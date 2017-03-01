@@ -36,7 +36,6 @@ apps=(
   ruby-install
   chruby
   nvm
-  elasticsearch
   postgresql
   redis
   mysql

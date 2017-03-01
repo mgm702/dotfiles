@@ -12,8 +12,6 @@ DOTFILES_DIR="$(dirname "$bootstrap_dir")"
 if test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
   . "$DOTFILES_DIR/linux/setup.sh"
-else
-  . "$DOTFILES_DIR/osx/setup.sh"
 fi
 
 # Package managers & packages
@@ -24,8 +22,8 @@ do
     if [ $dir = "brew" ]; then
       . "$dir/install.sh";
 
-      # After brew is run, we need all the packages installed to work
-      # we need to source the bash_profile script
+      # After brew is run
+      # source the bash_profile script
       # into either bashrc or bash_profile depending on system
       if test "$(expr substr $(uname -s) 1 5)" = "Linux"
       then
@@ -40,3 +38,9 @@ do
     fi
   fi
 done
+
+# After everything is installed for OSX, source in preffered setup
+if test "$(expr substr $(uname -s) 1 5)" = "Darwin"
+then
+  . "$DOTFILES_DIR/osx/setup.sh"
+fi
