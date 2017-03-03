@@ -4,13 +4,14 @@
 export DOTFILES_DIR
 bootstrap_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOTFILES_DIR="$(dirname "$bootstrap_dir")"
+export SYSTEM
+SYSTEM=$OSTYPE
 
 # Update dotfiles itself first
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 # if installed on Linux, run necessary updates
-if test "$(expr substr $(uname -s) 1 5)" = "Linux"
-then
+if [[ $SYSTEM == linux* ]]; then
   . "$DOTFILES_DIR/linux/setup.sh"
 fi
 
@@ -25,8 +26,7 @@ do
       # After brew is run
       # source the bash_profile script
       # into either bashrc or bash_profile depending on system
-      if test "$(expr substr $(uname -s) 1 5)" = "Linux"
-      then
+      if [[ $SYSTEM == linux* ]]; then
         ln -sfv "$DOTFILES_DIR/system/bash_profile" $HOME/.bashrc
         source $HOME/.bashrc
       else
@@ -40,7 +40,6 @@ do
 done
 
 # After everything is installed for OSX, source in preffered setup
-if test "$(expr substr $(uname -s) 1 5)" = "Darwin"
-then
+if [[ $SYSTEM == darwin* ]]; then
   . "$DOTFILES_DIR/osx/setup.sh"
 fi

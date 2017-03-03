@@ -1,8 +1,6 @@
 parse_ruby_version() {
   ruby_ver=$( ruby -v | egrep -o '^(m)?ruby [[:digit:]][[:punct:]][[:digit:]]([[:punct:]][[:digit:]])?' )
-  ruby_dir=$( echo $ruby_ver | egrep -o -m 1 -h '[[:digit:]]\.[[:digit:]](\.[[:digit:]])?')
-  dir=$(ls ~/.gem/ruby/$ruby_dir/gems/rails* 2>/dev/null)
-  if [[ $dir ]]; then
+  if [[ $(ruby -v 2>/dev/null) ]]; then
     rails_ver=$( rails -v | egrep -o '^Rails [[:digit:]][[:punct:]][[:digit:]]([[:punct:]][[:digit:]])?' )
     rails_ver=$( echo $rails_ver | tr '[:upper:]' '[:lower:]')
     echo ${ruby_ver} -- ${rails_ver}
