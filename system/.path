@@ -3,7 +3,8 @@ prepend-path "$HOME/bin"
 prepend-path "/usr/local/bin"
 
 # If installed on Linux system, add Linuxbrew to path
-if [[ $SYSTEM == linux* ]]; then
+if [[ $OSTYPE == linux* ]]
+then
   prepend-path "$HOME/.linuxbrew/bin"
 fi
 
@@ -13,7 +14,8 @@ export GOROOT=/usr/local/opt/go/libexec
 prepend-path "$GOROOT/bin:$GOPATH/bin"
 
 # Adds PHP7 to the Path
-if [[ $SYSTEM == darwin* ]]; then
+if [[ $OSTYPE == darwin* ]]
+then
   prepend-path "$(brew --prefix homebrew/php/php70)/bin"
 fi
 

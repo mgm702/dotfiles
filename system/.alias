@@ -11,7 +11,8 @@ alias vi="$(brew --prefix vim)/bin/vim"
 # Shortcuts
 alias tm="tmux"
 
-if [[ $(bundle 2>/dev/null )]]; then
+if [[ $(bundle 2>/dev/null) ]]
+then
   alias be="bundle exec"
 fi
 

@@ -1,12 +1,14 @@
 # Setup is configured based on OS setup on
 RUBY_VER=$(parse_ruby_version)
 
-if [[ $SYSTEM == darwin* ]]; then
+if [[ $SYSTEM == darwin* ]]
+then
   bash_prompt() {
   DIR_COUNT=$(/bin/ls -1 | /usr/bin/wc -l | gsed 's: ::g')
   PS1="\[\033[32m\][\w]\[\033[0m\] \033[35m\][ \${DIR_COUNT} files ]\n\[\033[1;36m\]\u\[\033[1;31m\] [${RUBY_VER}]:$(tput sgr0)\$(__git_ps1) \e[34m\] ☁︎ \[\e[0m\] "
   }
-elif [[ $SYSTEM == linux* ]]; then
+elif [[ $SYSTEM == linux* ]]
+then
   bash_prompt(){
   DIR_COUNT=$(/bin/ls -1 | /usr/bin/wc -l | sed 's: ::g')
   PS1="\[\033[32m\][\w]\[\033[0m\] \033[35m\][ \${DIR_COUNT} files ]\n\[\033[1;36m\]\u\[\033[1;31m\] [${RUBY_VER}]:$(tput sgr0)\$(__git_ps1) \e[34m\] ☁︎ \[\e[0m\] "
