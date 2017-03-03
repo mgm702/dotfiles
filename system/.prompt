@@ -1,5 +1,4 @@
 # Setup is configured based on OS setup on
-
 RUBY_VER=$(parse_ruby_version)
 
 if [[ $SYSTEM == darwin* ]]; then

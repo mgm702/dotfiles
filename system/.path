@@ -12,7 +12,6 @@ export GOPATH=$HOME/code/go
 export GOROOT=/usr/local/opt/go/libexec
 prepend-path "$GOROOT/bin:$GOPATH/bin"
 
-# Might have to setup for osX systems
 # Adds PHP7 to the Path
 if [[ $SYSTEM == darwin* ]]; then
   prepend-path "$(brew --prefix homebrew/php/php70)/bin"

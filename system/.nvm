@@ -1,3 +1,5 @@
 # This loads nvm
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+if [[ $(nvm 2>/dev/null )]]; then
+  export NVM_DIR="$HOME/.nvm"
+  source $(brew --prefix nvm)/nvm.sh
+fi

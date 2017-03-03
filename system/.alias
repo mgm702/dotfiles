@@ -10,7 +10,11 @@ alias vi="$(brew --prefix vim)/bin/vim"
 
 # Shortcuts
 alias tm="tmux"
-alias be="bundle exec"
+
+if [[ $(bundle 2>/dev/null )]]; then
+  alias be="bundle exec"
+fi
+
 alias rr="rm -rf"
 alias listaliases="alias | sed 's/=.*//'"
 alias quit="exit"
