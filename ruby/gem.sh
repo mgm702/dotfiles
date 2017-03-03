@@ -2,7 +2,11 @@
 # and sets up correct path to ruby files
 ruby-install ruby-2.4.0
 
-source $HOME/.bash_profile
+if [[ $OSTYPE == darwin* ]]; then
+  source $HOME/.bash_profile
+elif [[ $OSTYPE == linux* ]]; then
+  source $HOME/.bashrc
+fi
 
 chruby ruby-2.4.0
 gem install bundler

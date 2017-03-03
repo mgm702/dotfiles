@@ -4,9 +4,9 @@
 if test ! $(which brew)
   echo "Installing Homebrew Packages..."
 then
-  if [[ $SYSTEM == darwin* ]]; then
+  if [[ $OSTYPE == darwin* ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  elif [[ $SYSTEM == linux* ]]; then
+  elif [[ $OSTYPE == linux* ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
     . "$DOTFILES_DIR/brew/brew-linux.sh"
   fi
@@ -41,7 +41,7 @@ apps=(
 
 brew install "${apps[@]}"
 
-if [[ $SYSTEM == darwin* ]]; then
+if [[ $OSTYPE == darwin* ]]; then
   . "$DOTFILES_DIR/brew/brew-cask.sh"
 fi
 
