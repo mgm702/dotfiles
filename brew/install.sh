@@ -7,7 +7,7 @@ then
   if [[ $OSTYPE == darwin* ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   elif [[ $OSTYPE == linux* ]]; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+    git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
     . "$DOTFILES_DIR/brew/brew-linux.sh"
   fi
 fi

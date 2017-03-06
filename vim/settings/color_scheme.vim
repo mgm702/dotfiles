@@ -1,9 +1,19 @@
 " ================ Color Scheme ====================
 syntax on
 set term=screen-256color
-set background=light
-if !empty(glob("~/.vim/colors/mac_classic.vim"))
-  color mac_classic
+if has("unix")
+  let s:name = system("echo $OSTYPE")
+  if s:name =~#"linux*"
+    set background=dark
+    if !empty(glob("~/.vim/colors/jellybeans.vim"))
+      color jellybeans
+    endif
+  elseif s:name =~#"darwin*"
+    set background=light
+    if !empty(glob("~/.vim/colors/mac_classic.vim"))
+      color mac_classic
+    endif
+  endif
 endif
 
 " Mapping for Rainbow Parentheses

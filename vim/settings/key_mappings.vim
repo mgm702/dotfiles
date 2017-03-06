@@ -51,6 +51,12 @@ nnoremap <leader><space> :noh<cr>
 "Mapping to use tab instead of % for matching tags
 nnoremap <tab> %
 
+" Map CTRL+{h,j,k,l} keys to window switching
+nnoremap <c-k> <C-w><Up>
+nnoremap <c-j> <C-w><Down>
+nnoremap <c-l> <C-w><Right>
+nnoremap <c-h> <C-w><Left>
+
 " ======== Visual Mode Mapping ========
 
 "Mapping to use tab instead of % for matching tags
