@@ -12,6 +12,4 @@ sudo apt-get install virtualbox
 sudo apt-get install vagrant
 
 # Need to install these the old fashion way
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-sudo mv /usr/local/bin/composer.phar /usr/local/bin/composer
-#brew install homebrew/php/wp-cli
+sudo apt-get install composer
