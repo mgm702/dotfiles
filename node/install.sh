@@ -1,6 +1,6 @@
 # For some reason if .nvm directory isn't created
 # with Homebrew.
-if [! -d "$HOME/.nvm" ]
+if [ ! -d "$HOME/.nvm" ]
 then
   mkdir "$HOME/.nvm"
 fi

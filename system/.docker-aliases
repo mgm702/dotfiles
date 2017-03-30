@@ -1,0 +1,39 @@
+alias dcrm="docker rm $(docker ps -aq)"
+alias dstop="docker stop $(docker ps -aq)"
+
+d (){
+  docker $@
+}
+
+dcleanup(){
+    local containers
+    containers=( $(docker ps -aq 2>/dev/null) )
+    docker rm "${containers[@]}" 2>/dev/null
+    local volumes
+    volumes=( $(docker ps --filter status=exited -q 2>/dev/null) )
+    docker rm -v "${volumes[@]}" 2>/dev/null
+    local images
+    images=( $(docker images --filter dangling=true -q 2>/dev/null) )
+    docker rmi "${images[@]}" 2>/dev/null
+}
+
+aws(){
+    docker run -it --rm \
+        -v "${HOME}/.aws:/root/.aws" \
+        --name aws \
+        ${DOCKER_REPO_PREFIX}/awscli "$@"
+}
+
+wrk(){
+    docker run -it --rm \
+        --name wrk \
+        ${DOCKER_REPO_PREFIX}/wrk "$@"
+}
+
+kernel_builder(){
+    docker run --rm -it \
+        -v /usr/src:/usr/src \
+        --cpu-shares=512 \
+        --name kernel-builder \
+        ${DOCKER_REPO_PREFIX}/kernel-builder
+}

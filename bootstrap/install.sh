@@ -31,6 +31,8 @@ do
         ln -sfv "$DOTFILES_DIR/system/bash_profile" $HOME/.bash_profile
         source $HOME/.bash_profile
       fi
+        # Link the Ctags Configure File
+        ln -sfv "$DOTFILES_DIR/system/ctags" $HOME/.ctags
     else
       . "$dir/install.sh";
     fi

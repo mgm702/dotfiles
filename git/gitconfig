@@ -6,7 +6,7 @@
   user = mgm702
 
 [core]
-  excludesfile = /Users/mmichnal/.gitignore_global
+  excludesfile = $HOME/.gitignore
   editor = vim
 
 [alias]
