@@ -1,0 +1,45 @@
+dm(){
+  docker-machine $@
+}
+
+dm-env(){
+  eval `docker-machine env $2 $1`
+}
+
+dm-up() {
+  docker_running=$(docker-machine ls | grep default)
+  if [[ "$docker_running" == *"Stopped"* ]]
+  then
+      docker-machine start default
+      eval "$(docker-machine env default)"
+      env | grep "DOCKER_HOST"
+      if docker ps >&/dev/null; then
+        source $HOME/.docker_aliases
+      fi
+  fi
+}
+
+dm-down(){
+  docker-machine stop ${1:default}
+}
+
+dm-start(){
+  docker-machine start ${1:default}
+  if docker ps >&/dev/null; then
+    source $HOME/.docker_aliases
+  fi
+}
+
+dm-stop(){
+  machines=$(docker-machine ls -f "{{.Name}}")
+  for m in "${machines[@]}"; do
+    command $(docker-machine stop $m);
+  done
+}
+
+dm-up-all(){
+  machines=$(docker-machine ls -f "{{.Name}}")
+  for m in "${machines[@]}"; do
+    command $(docker-machine start $m);
+  done
+}
