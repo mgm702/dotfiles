@@ -24,11 +24,12 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function_*,path,env,chruby,alias,complet
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
-#Source in necessary files for docker on both systems
-if [[ $OSTYPE == darwin* ]]; then
-  . "$DOTFILES_DIR/system/.docker-mac"
-elif [[ $OSTYPE == linux* ]]; then
-  . "$DOTFILES_DIR/system/.docker-aliases"
+if docker >&/dev/null; then
+  . $DOTFILES_DIR/system/.docker_aliases
+fi
+
+if docker-machine >&/dev/null; then
+  . $DOTFILES_DIR/system/.docker_machine_aliases
 fi
 
 bash_prompt
