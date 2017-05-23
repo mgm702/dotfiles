@@ -10,8 +10,7 @@ fi
 
 # Path additions for GoLang
 export GOPATH=$HOME/code/go
-export GOROOT=/usr/local/opt/go/libexec
-prepend-path "$GOROOT/bin:$GOPATH/bin"
+prepend-path "$GOPATH/bin"
 
 # Adds PHP7 to the Path
 if [[ $OSTYPE == darwin* ]]

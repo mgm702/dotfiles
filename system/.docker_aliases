@@ -2,10 +2,6 @@ d (){
   docker $@
 }
 
-d-test(){
-  docker run --rm -it ${1:debian} /bin/bash
-}
-
 if docker ps >&/dev/null; then
   alias dcstop="docker stop `docker ps -aq`"
   alias dcrm="docker rm `docker ps -aq`"
@@ -13,6 +9,10 @@ if docker ps >&/dev/null; then
   dc-remove-all(){
     docker stop $(docker ps -a -q)
     docker rm $(docker ps -a -q)
+  }
+
+  d-test(){
+    docker run --rm -it ${1:debian} /bin/bash
   }
 
   dcleanup(){
@@ -26,18 +26,18 @@ if docker ps >&/dev/null; then
       images=( $(docker images --filter dangling=true -q 2>/dev/null) )
       docker rmi "${images[@]}" 2>/dev/null
   }
+
+  aws(){
+      docker run -it --rm \
+          -v "${HOME}/.aws:/root/.aws" \
+          --name aws \
+          ${DOCKER_REPO_PREFIX}/awscli "$@"
+  }
+
+  kernel_builder(){
+      docker run --rm -it \
+          -v /usr/src:/usr/src \
+          --name kernel-builder \
+          ${DOCKER_REPO_PREFIX}/kernel-builder
+  }
 fi
-
-aws(){
-    docker run -it --rm \
-        -v "${HOME}/.aws:/root/.aws" \
-        --name aws \
-        ${DOCKER_REPO_PREFIX}/awscli "$@"
-}
-
-kernel_builder(){
-    docker run --rm -it \
-        -v /usr/src:/usr/src \
-        --name kernel-builder \
-        ${DOCKER_REPO_PREFIX}/kernel-builder
-}
