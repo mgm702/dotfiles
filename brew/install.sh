@@ -19,24 +19,18 @@ brew update
 brew upgrade
 
 apps=(
-  bash-completion
-  coreutils
-  tmux
-  dockutil
-  go
-  gnu-sed
-  hub
-  wget
-  ctags
-  imagemagick
-  vim
-  z
   ruby-install
   chruby
   nvm
-  postgresql
-  redis
-  mysql
+  vim
+  tmux
+  bash-completion
+  coreutils
+  dockutil
+  gnu-sed
+  hub
+  imagemagick
+  z
 )
 
 brew install "${apps[@]}"

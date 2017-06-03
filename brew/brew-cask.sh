@@ -45,6 +45,11 @@ mac=(
   awscli
   homebrew/php/wp-cli
   composer
+  wget
+  ctags
+  postgresql
+  redis
+  mysql
 )
 
 brew install "${mac[@]}"

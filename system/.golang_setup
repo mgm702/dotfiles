@@ -1,4 +1,4 @@
+[[ -s "/home/mmichnal/.gvm/scripts/gvm" ]] && source "/home/mmichnal/.gvm/scripts/gvm"
 if gvm >&/dev/null; then
-  [[ -s "/home/mmichnal/.gvm/scripts/gvm" ]] && source "/home/mmichnal/.gvm/scripts/gvm"
   gvm use go1.8 > /dev/null 2>&1
 fi
