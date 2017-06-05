@@ -18,4 +18,4 @@ endif
 
 " Mapping for Rainbow Parentheses
 let g:rainbow_active = 1 " 0 if you want to enable it later via :RainbowToggle
-let g:rainbow_conf = {'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick']}
+let g:rainbow_conf = {'ctermfgs': ['blue', 'magenta', 'cyan', 'red']}
