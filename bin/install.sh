@@ -10,4 +10,4 @@ ln -sfv "$DOTFILES_DIR/bin/glog" $HOME/bin/glog
 ln -sfv "$DOTFILES_DIR/bin/va" $HOME/bin/va
 ln -sfv "$DOTFILES_DIR/bin/wtr" $HOME/bin/wtr
 
-chmod 777 $HOME/bin/*
+chmod 775 $HOME/bin/*

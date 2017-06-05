@@ -6,4 +6,10 @@ source "$HOME/.gvm/scripts/gvm"
 gvm install go1.4
 gvm install go1.8
 
-# possibly have this run after source of bashrc and then install packages necessary for dev work
+gvm use go1.8
+
+# install global golang packages
+go get -u github.com/moteman/gore
+
+# install local golang packages
+go get github.com/urfave/cli

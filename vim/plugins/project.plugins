@@ -8,3 +8,4 @@ Plug 'vim-scripts/FuzzyFinder', {'on': 'FufFile'}
 Plug 'vim-scripts/YankRing.vim'
 Plug 'tpope/vim-obsession', {'on': 'Obsess'}
 Plug 'benmills/vimux', {'on': ['PromptVimTmuxCommand', 'RunLastVimTmuxCommand', 'VimuxRunCommand']}
+Plug 'mhinz/vim-grepper'

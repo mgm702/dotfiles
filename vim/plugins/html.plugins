@@ -1,3 +1,3 @@
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'gregsexton/MatchTag', {'for': 'html'}
-Plug 'matchit.zip', {'for': 'html'}
+Plug 'vim-scripts/matchit.zip', {'for': 'html'}
