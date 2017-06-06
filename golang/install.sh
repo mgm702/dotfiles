@@ -3,7 +3,9 @@ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/bins
 source "$HOME/.gvm/scripts/gvm"
 
 # install the golang versions you want (1.4, 1.8)
+export CGO_ENABLED=0
 gvm install go1.4
+gvm use go1.4
 gvm install go1.8
 
 gvm use go1.8

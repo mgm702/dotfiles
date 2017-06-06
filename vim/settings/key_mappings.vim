@@ -6,12 +6,6 @@
 
 " ======== Normal Mode Mapping ========
 
-" This disables the arrow keys in normal mode
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-
 " Pressing ,sc will toggle and untoggle spell checking
 nnoremap <leader>sc :setlocal spell!<cr>
 
