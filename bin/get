@@ -1,7 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # gets a variable (usage: get "VAR_NAME")
-
-get() {
-  echo "${!1}"
-}
+echo "${!1}"

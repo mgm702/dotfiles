@@ -2,6 +2,8 @@
 
 # Quick command to see weather in certain town
 
-wtr(){
+if [ "$1" = "" ] ; then
+  curl -4 'wttr.in/boulder'
+else
   curl -4 'wttr.in/$1'
-}
+fi
