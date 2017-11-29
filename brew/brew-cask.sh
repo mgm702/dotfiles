@@ -13,14 +13,13 @@ apps=(
   flycut
   anki
   google-chrome
-  google-drive
   slack
+  discord
   sketch
   spotify
   tomighty
   java
-  screenhero
-  iterm2
+  caskroom/versions/java8
   macvim
   gitx
   evernote
@@ -34,22 +33,25 @@ apps=(
 )
 brew cask install "${apps[@]}"
 
+# make it so if /Applications/iTerm.app is found don't install this package
+# brew cask install iterm2
+
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
 
 # Install packages that don't really work on Linux systems
 mac=(
-  elasticsearch
+  wget
   heroku-toolbelt
   python
   awscli
   homebrew/php/wp-cli
   composer
-  wget
   ctags
   postgresql
   redis
   mysql
+  elasticsearch
 )
 
 brew install "${mac[@]}"

@@ -1,4 +1,4 @@
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 if gvm >&/dev/null; then
-  gvm use go1.8 > /dev/null 2>&1
+  gvm use go1.8 --default > /dev/null 2>&1
 fi

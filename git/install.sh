@@ -4,7 +4,7 @@
 GIT_HOOKS=$HOME/.git_template/hooks
 ln -sfv "$DOTFILES_DIR/git/gitignore_global" $HOME/.gitignore
 ln -sfv "$DOTFILES_DIR/git/gitconfig" $HOME/.gitconfig
-ln -sfv "$DOTFILES_DIR/git/git_prompt" $HOME/.git-prompt.sh
+ln -sfv "$DOTFILES_DIR/git/git-prompt" $HOME/.git-prompt.sh
 
 ## Configuration for CTags in Git Repos
 mkdir -p $GIT_HOOKS

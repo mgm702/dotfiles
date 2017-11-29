@@ -1,0 +1,8 @@
+parse_go_version() {
+  if [[ $(go version 2>/dev/null) ]]; then
+    extract_go_data=$( go version | grep -o '[[:digit:]].*')
+    go_ver=$(echo $extract_go_data | grep -o '^\S*')
+    system_type=$( echo $extract_go_data | grep -o '[[:blank:]].*')
+      echo "go${go_ver} --${system_type}"
+  fi
+}

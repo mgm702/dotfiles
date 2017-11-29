@@ -1,6 +1,9 @@
 # Shows all the ruby directories that are currently being used
 alias lpath="ruby -e 'puts $:'"
 
+# Gets all of the go dependencies for golang project
+alias go_dep="go get -d ./..."
+
 # Shows the memory hogs of the directory
 alias ducks='du -cks * | sort -rn | head'
 
