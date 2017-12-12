@@ -19,3 +19,4 @@ gem install lunchy
 gem install nokogiri
 gem install mechanize
 gem install rails
+gem install jekyll

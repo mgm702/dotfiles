@@ -17,6 +17,7 @@ set cmdheight=2                " Sets the Height of the Command Line
 set wildmenu                   " Turn on the WiLd menu, auto complete for commands in command line
 set noerrorbells               " No sounds on error
 set novisualbell
+set clipboard=unnamedplus
 
 let g:mapleader = ","
 

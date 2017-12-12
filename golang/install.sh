@@ -13,5 +13,8 @@ gvm use go1.8
 # install global golang packages
 go get -u github.com/motemen/gore
 
+# install go dep (package manager)
+go get -u github.com/golang/dep/cmd/dep
+
 # install local golang packages
 go get github.com/urfave/cli

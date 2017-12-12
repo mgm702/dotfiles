@@ -17,7 +17,6 @@ runtime js.plugins
 runtime css.plugins
 runtime c.plugins
 runtime go.plugins
-runtime c.plugins
 " runtime status_line.plugins
 
 call plug#end()

@@ -24,7 +24,7 @@
   default = current
 
 [merge]
-  tool = opendiff
+  tool = vimdiff
 
 [mergetool]
   keepBackup = false
