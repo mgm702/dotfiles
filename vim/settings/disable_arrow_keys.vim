@@ -25,6 +25,6 @@ endfun
 
 au VimEnter * call NoKeys()
 
-nnoremap nk :call NoKeys()<cr>
-nnoremap kp :call KeysPlease()<cr>
+" nnoremap nk :call NoKeys()<cr>
+" nnoremap kp :call KeysPlease()<cr>
 
