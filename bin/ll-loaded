@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo /sbin/ldconfig -v | grep $1
