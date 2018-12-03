@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 # Install Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Symlink the gitconfig and git template files
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 GIT_HOOKS=$HOME/.git_template/hooks
 ln -sfv "$DOTFILES_DIR/git/gitignore_global" $HOME/.gitignore
 ln -sfv "$DOTFILES_DIR/git/gitconfig" $HOME/.gitconfig

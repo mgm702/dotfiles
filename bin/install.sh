@@ -1,5 +1,5 @@
 #!/bin/bash
-
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 mkdir $HOME/bin
 ln -sfv "$DOTFILES_DIR/bin/calc" $HOME/bin/calc
 ln -sfv "$DOTFILES_DIR/bin/colors" $HOME/bin/colors

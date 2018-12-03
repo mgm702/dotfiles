@@ -1,3 +1,4 @@
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 # For some reason if .nvm directory isn't created
 # with Homebrew.
 if [ ! -d "$HOME/.nvm" ]

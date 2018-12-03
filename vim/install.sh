@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 VIM_DIR=$HOME/.vim
 BUNDLE_DIR=$VIM_DIR/bundle
 COLOR_DIR=$VIM_DIR/colors

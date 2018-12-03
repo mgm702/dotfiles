@@ -1,4 +1,6 @@
 #!/bin/sh
 
 # Quick shortcut for vagrant commands
-vagrant $1
+if command -v vagrant >/dev/null 2>&1; then
+  vagrant "$@"
+fi

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Installing Ruby!"
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 
 #Time to Source in the Ruby Gems
 . "$DOTFILES_DIR/ruby/gem.sh"

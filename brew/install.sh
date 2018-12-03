@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+DOTFILES_DIR=${DOTFILES_DIR:="$HOME/.dotfiles"}
 # Install Homebrew for different OS type
 if test ! $(which brew)
   echo "Installing Homebrew Packages..."
