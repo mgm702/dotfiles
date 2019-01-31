@@ -12,12 +12,6 @@ fi
 export GOPATH=$HOME/code/go
 prepend-path "$GOPATH/bin"
 
-# Adds PHP7 to the Path
-if [[ $OSTYPE == darwin* ]]
-then
-  prepend-path "$(brew --prefix homebrew/php/php70)/bin"
-fi
-
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 PATH=`echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}'`

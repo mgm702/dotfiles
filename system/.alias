@@ -9,18 +9,30 @@ alias ducks='du -cks * | sort -rn | head'
 
 # Adds Ctags for the gems currently being used
 alias gem_ctags="ctags -R . $(bundle list --paths)"
+
+# this is only needed on a mac
+alias ctags="`brew --prefix`/bin/ctags"
+
 alias vi="$(brew --prefix vim)/bin/vim"
 
 # Shortcuts
 alias tm="tmux"
 
+# Python shortcuts
+alias py3="python3"
+
+# Ruby shortcuts
 if [[ $(bundle 2>/dev/null) ]]
 then
   alias be="bundle exec"
 fi
 
+alias be="bundle exec"
+
+alias rc="rails console"
+alias rdb="rails db"
+
 alias rr="rm -rf"
-alias listaliases="alias | sed 's/=.*//'"
 alias quit="exit"
 
 # Network Shortcuts

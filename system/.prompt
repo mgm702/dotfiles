@@ -6,7 +6,7 @@ then
     go_ver="\$(parse_go_version)"
     count="\$(/bin/ls -1 | /usr/bin/wc -l | gsed 's: ::g') files"
     git_ps_prompt="\$(__git_ps1)"
-    PS_DIR="$(tput sgr0)\]\[\033[38;5;15m\][\[$(tput sgr0)\]\[\033[38;5;46m\] \W \[$(tput sgr0)\]\[\033[38;5;15m\]]"
+    PS_DIR="$(tput sgr0)\]\[\033[38;5;15m\][\[$(tput sgr0)\]\[\033[38;5;46m\] \w \[$(tput sgr0)\]\[\033[38;5;15m\]]"
     PS_COUNT="[\[$(tput sgr0)\]\[\033[35m\] $count \[$(tput sgr0)\]\[\033[38;5;15m\]]"
     PS_USER="\[$(tput bold)\]\[\033[1;36m\]\u@\h\[$(tput sgr0)\]"
     PS_RUBY_VER="$(tput sgr0)\]\[\033[38;5;15m\][\[$(tput sgr0)\]\[\033[1;31m\] $ruby_ver \[$(tput sgr0)\]\[\033[38;5;15m\]]"

@@ -45,7 +45,6 @@ mac=(
   heroku-toolbelt
   python
   awscli
-  homebrew/php/wp-cli
   composer
   ctags
   postgresql
