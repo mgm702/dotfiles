@@ -10,8 +10,8 @@ fi
 . "${DOTFILES_DIR}/system/.nvm"
 
 # install node version
-nvm install 7.5
-nvm use 7.5
+nvm install 17.0.1
+nvm use v17.0.1
 
 # Globally install these packages
 packages=(

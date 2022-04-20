@@ -1,12 +1,12 @@
 [user]
   name = Matt Michnal
-  email = mattm3646@gmail.com
+	email = 100613693+mmichnalIDBS@users.noreply.github.com
 
 [github]
   user = mgm702
 
 [core]
-  excludesfile = $HOME/.gitignore
+  excludesfile = /Users/mmichnal/.gitignore
   editor = vim
 
 [alias]
@@ -15,7 +15,7 @@
   s = status
   co = checkout
   l = log
-  ctags = !.git/hooks/ctags
+  ctags = !.git_template/hooks/ctags
 
 [color]
   ui = auto
@@ -23,11 +23,42 @@
 [push]
   default = current
 
-[merge]
-  tool = vimdiff
+#[diff]
+#  tool = kdiff3
+#[difftool]
+#  prompt = false
+#[difftool "kdiff3"]
+#  path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 
+[merge]
+  tool = meld
 [mergetool]
-  keepBackup = false
+  prompt = false
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
+[difftool "vimdiff"]
+  trustExitCode = true
+
+# [merge]
+#   tool = vimdiff
+# [mergetool]
+#   prompt = false
+# [mergetool "vimdiff"]
+#   keepBackup = false
+#   trustExitCode = true
 
 [init]
   templatedir = ~/.git_template
+[gui]
+	recentrepo = /Users/mmichnal/code/work/pims
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

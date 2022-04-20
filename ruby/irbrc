@@ -1,13 +1,14 @@
+require 'irb'
 require 'irb/completion'
 require 'rubygems'
 require 'looksee'
 require 'fileutils'
 
 IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:PROMPT_MODE] = :SIMPLE
-IRB.conf[:AUTO_INDENT] = true
 
+# === CONVENIENCE METHODS ===
+# lists the loaded gems in irb environment
 def loaded_gems
   rv = %x( ruby -v )
   ruby_ver = rv[/^ruby.\d.\d.\d/].gsub!("ruby ","")
@@ -16,6 +17,7 @@ def loaded_gems
   nil
 end
 
+# list the directory irb environment is in
 def dir_ls
   files = Dir.glob('*').sort
   files.each do |f|
@@ -28,9 +30,35 @@ def dir_ls
   nil
 end
 
+# copy a string to the clipboard
+def cp(string)
+  `echo "#{string}" | pbcopy`
+  puts "copied in clipboard"
+end
+
+# Stolen from https://gist.github.com/807492
+# Use Array.toy or Hash.toy to get an array or hash to play with
+class Array
+  def self.toy(n=10, &block)
+    block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
+  end
+end
+
+class Hash
+  def self.toy(n=10)
+    Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
+  end
+end
+
 class Object
-  def local_methods(obj = self)
+  # Easily print methods local to an object's class
+  def lm(obj = self)
     (obj.orig_methods - obj.class.superclass.instance_methods).sort
+  end
+
+  # look up source location of a method
+  def sl(method_name)
+    self.method(method_name).source_location rescue "#{method_name} not found"
   end
 
   # Print docs, ex: String.ri :downcase

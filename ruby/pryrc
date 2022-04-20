@@ -1,0 +1,125 @@
+require 'pry'
+# require 'awesome_print'
+
+# === EDITOR ===
+Pry.editor = 'vi'
+Pry.config.color = true
+Pry.config.theme = "solarized"
+
+# == Pry-Nav - Using pry as a debugger ==
+Pry.commands.alias_command 'c', 'continue' rescue nil
+Pry.commands.alias_command 's', 'step' rescue nil
+Pry.commands.alias_command 'n', 'next' rescue nil
+Pry.commands.alias_command 'f', 'finish' rescue nil
+Pry.commands.alias_command 'w', 'whereami' rescue nil
+Pry.commands.alias_command 'r!', 'reload!' rescue nil
+Pry.commands.alias_command 'e', 'edit' rescue nil
+
+# === Listing config ===
+# Better colors - by default the headings for methods are too
+# similar to method name colors leading to a "soup"
+# These colors are optimized for use with Solarized scheme
+# for your terminal
+Pry.config.ls.separator = "\n" # new lines between methods
+Pry.config.ls.heading_color = :magenta
+Pry.config.ls.public_method_color = :green
+Pry.config.ls.protected_method_color = :yellow
+Pry.config.ls.private_method_color = :bright_black
+
+# === CUSTOM COMMANDS ===
+Pry.config.commands.command 'html-view', 'Write input to and html file and open it' do |input|
+  input = input ? target.eval(input) : _pry_.last_result
+  require 'tempfile'
+  file = Tempfile.new(['pry-result', '.html'])
+  begin
+    file.write(input)
+    file.rewind
+    `open #{file.path}`
+  ensure
+    file.unlink
+  end
+end
+
+Pry.config.commands.command 'sql', 'Send sql over AR' do |query|
+  if ENV['RAILS_ENV'] || defined?(Rails)
+    pp ActiveRecord::Base.connection.select_all(query)
+  else
+    pp "No rails env defined"
+  end
+end
+
+# copy a string to the clipboard
+def cp(string)
+  `echo "#{string}" | pbcopy`
+  puts "copied in clipboard"
+end
+
+# === CONVENIENCE METHODS ===
+# Stolen from https://gist.github.com/807492
+# Use Array.toy or Hash.toy to get an array or hash to play with
+class Array
+  def self.toy(n=10, &block)
+    block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
+  end
+end
+
+class Hash
+  def self.toy(n=10)
+    Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
+  end
+end
+
+banner = ""
+banner = if defined?(Rails) && Rails.env.production?
+  "\e[41;97;1m #{Rails.env} (Ruby #{RUBY_VERSION} / #{`rails -v`.strip}) \e[0m "
+elsif defined?(Rails)
+  "\e[42;97;1m #{Rails.env} (Ruby #{RUBY_VERSION} / #{`rails -v`.strip}) \e[0m "
+else
+  "\e[41;97;1m (Ruby #{RUBY_VERSION}) \e[0m "
+end
+
+Pry.config.prompt = Pry::Prompt.new(
+  "rails_highlight",
+  "highlight based on rails env",
+  [
+    proc { banner + ">> " },
+    proc { banner + ">> " }
+  ]
+)
+
+class Object
+  # Easily print methods local to an object's class
+  def lm(obj = self)
+    (obj.orig_methods - obj.class.superclass.instance_methods).sort
+  end
+
+  # look up source location of a method
+  def sl(method_name)
+    self.method(method_name).source_location rescue "#{method_name} not found"
+  end
+
+  # Print docs, ex: String.ri :downcase
+  def ri(method = nil)
+    unless method && method =~ /^[A-Z]/ # if class isn't specified
+      klass = self.kind_of?(Class) ? name : self.class.name
+      method = [klass, method].compact.join('#')
+    end
+    puts `ri '#{method}'`
+  end
+end
+
+module Kernel
+  alias_method :orig_methods, :methods
+
+  def methods(*args)
+    if caller.first =~ /(irb)/
+      self.ls(*args)
+    else
+      orig_methods
+    end
+  end
+
+  def r
+    reload!
+  end
+end

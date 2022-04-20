@@ -1,5 +1,5 @@
 Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
-Plug 'tpope/vim-rails', {'for': ['ruby', 'haml']}
+Plug 'tpope/vim-rails', {'for': ['ruby', 'haml', 'slim', 'es6', 'js']}
 Plug 'tpope/vim-endwise', {'for': 'ruby'}
 Plug 'tpope/vim-bundler', {'for': 'ruby'}
 Plug 'tpope/vim-rake', {'for': 'ruby'}

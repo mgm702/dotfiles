@@ -17,6 +17,8 @@ else
   return # `exit 1` would quit the shell itself
 fi
 
+export GIT_TERMINAL_PROMPT=1
+
 #Files to source in
 source $HOME/.git-prompt.sh
 
@@ -33,3 +35,15 @@ if docker-machine >&/dev/null; then
 fi
 
 bash_prompt
+
+[ -s "/Users/mmichnal/.scm_breeze/scm_breeze.sh" ] && source "/Users/mmichnal/.scm_breeze/scm_breeze.sh"
+
+[[ -s "/Users/mmichnal/.gvm/scripts/gvm" ]] && source "/Users/mmichnal/.gvm/scripts/gvm"
+
+alias cat="bat"
+export BAT_THEME="TwoDark"
+export PATH="/usr/local/sbin:$PATH"
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+. "$HOME/.cargo/env"
